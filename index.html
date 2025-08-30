@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="de">
 <head>
@@ -6,27 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Massagepraxis Harmonie — Igor & Valentina Osmykha</title>
   <meta name="description" content="Massagepraxis Harmonie in Villingen-Schwenningen — entspannende und gesundheitsfördernde Massagen. Wir bringen Harmonie für Körper und Seele." />
-  <!-- Подключение внешнего файла стилей -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Фавиконы (положите файлы в корень репозитория) -->
-  <link rel="icon" href="favicon.ico?v=2" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=2" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=2" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2">
-
-  <!-- Манифест (опционально) -->
-  <link rel="manifest" href="site.webmanifest">
-
-  <!-- Цвет темы для мобильных браузеров -->
-  <meta name="theme-color" content="#9bd9b6">
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
       <!-- Логотип (SVG inline) -->
-      <div class="logo" id="logo" aria-hidden="true" title="Harmonie">
-        <svg width="88" height="88" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Harmonie logo">
+      <div class="logo" id="logo">
+        <!-- Простой векторный логотип; при желании можно заменить на images/logo.png -->
+        <svg width="88" height="88" viewBox="0 0 100 100" xmlns="images/logo.png" aria-hidden="true">
           <circle cx="50" cy="50" r="44" fill="#dff6ec" stroke="#9bd9b6" stroke-width="4"/>
           <path d="M30 60 C40 33, 60 33, 70 60" fill="none" stroke="#4aa67a" stroke-width="5" stroke-linecap="round"/>
           <circle cx="40" cy="40" r="3" fill="#4aa67a"/>
@@ -46,7 +33,7 @@
       </div>
     </div>
 
-    <!-- Невидимая зона для секретного послания -->
+    <!-- Невидимая зона для секретного послания (можно кликать) -->
     <div id="secret-click-area" title="(versteckt)"></div>
   </header>
 
@@ -59,6 +46,7 @@
     <section class="services">
       <h2>Leistungen &amp; Preise</h2>
 
+      <!-- Service 1: картинка справа (по умолчанию normal) -->
       <article class="service">
         <div class="service-text">
           <h3>Rücken- und Nackenmassage</h3>
@@ -66,10 +54,11 @@
           <div class="price">30 €</div>
         </div>
         <div class="service-image">
-          <img src="https://via.placeholder.com/800x480?text=Rücken+%26+Nacken" alt="Rücken- und Nackenmassage">
+          <img src="images/service1.jpg" alt="Rücken- und Nackenmassage">
         </div>
       </article>
 
+      <!-- Service 2: картинка слева (reverse) -->
       <article class="service reverse">
         <div class="service-text">
           <h3>Rücken- und Beinmassage</h3>
@@ -77,10 +66,11 @@
           <div class="price">45 €</div>
         </div>
         <div class="service-image">
-          <img src="https://via.placeholder.com/800x480?text=Rücken+%26+Bein" alt="Rücken- und Beinmassage">
+          <img src="images/service2.jpg" alt="Rücken- und Beinmassage">
         </div>
       </article>
 
+      <!-- Service 3: картинка справа -->
       <article class="service">
         <div class="service-text">
           <h3>Ganzkörpermassage</h3>
@@ -88,10 +78,11 @@
           <div class="price">60 €</div>
         </div>
         <div class="service-image">
-          <img src="https://via.placeholder.com/800x480?text=Ganzkörper" alt="Ganzkörpermassage">
+          <img src="images/service3.jpg" alt="Ganzkörpermassage">
         </div>
       </article>
 
+      <!-- Service 4: reverse -->
       <article class="service reverse">
         <div class="service-text">
           <h3>Sportmassage</h3>
@@ -99,10 +90,11 @@
           <div class="price">60 €</div>
         </div>
         <div class="service-image">
-          <img src="https://via.placeholder.com/800x480?text=Sportmassage" alt="Sportmassage">
+          <img src="images/service4.jpg" alt="Sportmassage">
         </div>
       </article>
 
+      <!-- Service 5 -->
       <article class="service">
         <div class="service-text">
           <h3>Anti-Cellulite-Massage</h3>
@@ -110,10 +102,11 @@
           <div class="price">40 €</div>
         </div>
         <div class="service-image">
-          <img src="https://via.placeholder.com/800x480?text=Anti-Cellulite" alt="Anti-Cellulite-Massage">
+          <img src="images/service5.jpg" alt="Anti-Cellulite-Massage">
         </div>
       </article>
 
+      <!-- Service 6 -->
       <article class="service reverse">
         <div class="service-text">
           <h3>Entspannungsmassage mit Aromaölen</h3>
@@ -121,7 +114,7 @@
           <div class="price">45 €</div>
         </div>
         <div class="service-image">
-          <img src="https://via.placeholder.com/800x480?text=Aroma+Entspannung" alt="Entspannungsmassage mit Aromaölen">
+          <img src="images/service6.jpg" alt="Entspannungsmassage mit Aromaölen">
         </div>
       </article>
 
@@ -132,6 +125,7 @@
 
       <p>Für Terminvereinbarungen rufen Sie bitte an oder schreiben Sie uns per WhatsApp.</p>
 
+      <!-- Пример формы (Formspree) — замените action на ваш сигнал от Formspree -->
       <form id="contact-form" action="https://formspree.io/f/xgvlkegy" method="POST">
         <div class="form-row">
           <label>Ihr Name
@@ -148,6 +142,7 @@
       </form>
 
 
+    </section>
 
     <footer class="site-footer">
       <p>© Massagepraxis «Harmonie» — Igor &amp; Valentina Osmykha — Villingen-Schwenningen</p>
@@ -155,11 +150,12 @@
     </footer>
   </main>
 
-  <!-- Секретное сообщение -->
+  <!-- Секретное сообщение (по умолчанию скрыто) -->
   <div id="secretMessage" aria-hidden="true">Made by SerJoy</div>
 
   <script>
     // ----- Секретное послание -----
+    // Клики на область #secret-click-area или на логотип: 7 кликов в течение 5 секунд — открыть сообщение.
     (function(){
       const area = document.getElementById('secret-click-area');
       const logo = document.getElementById('logo');
@@ -173,14 +169,16 @@
         if(clicks >= 7){
           msg.style.display = 'block';
           msg.setAttribute('aria-hidden','false');
-          msg.style.opacity = '1';
+          // плавное исчезание через 6 секунд (или можно закрыть вручную)
+          setTimeout(()=>{ msg.style.opacity = '1'; }, 10);
           setTimeout(()=>{ msg.style.opacity = '0'; setTimeout(()=>msg.style.display='none',600); }, 6000);
           clicks = 0;
         }
       }
-      if(area) area.addEventListener('click', registerClick);
-      if(logo) logo.addEventListener('click', registerClick);
+      area.addEventListener('click', registerClick);
+      logo.addEventListener('click', registerClick);
 
+      // Дополнительно: сочетание клавиш H+A+R+M+O+N+I+E (последовательность)
       const secretSeq = ['h','a','r','m','o','n','i','e'];
       let seqIndex = 0;
       window.addEventListener('keydown', (e)=>{
@@ -197,4 +195,3 @@
   </script>
 </body>
 </html>
-```
