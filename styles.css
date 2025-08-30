@@ -1,6 +1,5 @@
-/* styles.css */
+/* styles.css - обновлённый стиль с боковой навигацией, sticky sidebar и мобильной панелью */
 
-/* ========== Root / palette ========== */
 :root{
   --accent-light: #eaf7ec;
   --accent-mid: #cfefe0;
@@ -10,17 +9,19 @@
   --bg: #f6fbf8;
   --maxw: 1200px;
   --radius: 14px;
+  --sidebar-w: 260px;
 }
 
-/* Базовые */
+/* базовые */
 *{box-sizing:border-box}
+html,body{height:100%}
 body{
   font-family: Inter, "Helvetica Neue", Arial, sans-serif;
   margin:0; background:var(--bg); color:#142a20; line-height:1.45;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
 
-/* ========== HEADER / HERO ========== */
-/* фон: плавный градиент (перелив) */
+/* HEADER */
 .site-header{
   background:
     radial-gradient(1200px 400px at 10% 10%, rgba(255,255,255,0.6), rgba(255,255,255,0) 30%),
@@ -28,8 +29,6 @@ body{
   border-bottom: 1px solid rgba(0,0,0,0.06);
   padding:26px 12px;
 }
-
-/* контейнер — 3 колонки: логотип / центр / правая колонка */
 .header-inner{
   max-width: var(--maxw);
   margin: 0 auto;
@@ -38,8 +37,6 @@ body{
   gap: 18px;
   align-items: center;
 }
-
-/* Логотип */
 .logo img{
   width: 300px;
   height: 300px;
@@ -52,8 +49,6 @@ body{
   border: 6px solid rgba(255,255,255,0.9);
   cursor:pointer;
 }
-
-/* Центр заголовка (Arial Black если есть) */
 .title-wrap{ text-align:center; position:relative; }
 .site-title{
   margin:0;
@@ -66,8 +61,6 @@ body{
      0 10px 20px rgba(0,0,0,0.08);
   line-height:0.95;
 }
-
-/* Слоган — Gabriola fallback (italic serif) */
 .tagline{
   margin:12px 0 0 0;
   font-family: "Gabriola", "Cormorant Garamond", Georgia, serif;
@@ -78,13 +71,9 @@ body{
   letter-spacing: 0.8px;
   text-shadow: 1px 1px 0 rgba(255,255,255,0.4);
 }
-
-/* Правая колонка */
 .right-block{ display:flex; flex-direction:column; align-items:flex-start; gap:14px; justify-self:end; }
 .owners{ margin:0; font-size:16px; color:var(--muted); transform: translateX(26px); }
 .owners-small{ display:block; font-size:14px; color:#304b3f; opacity:0.95 }
-
-/* Контакты */
 .contacts{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
 .btn{
   background: var(--accent-dark);
@@ -105,47 +94,85 @@ body{
 }
 .btn.mail{ width:100%; text-align:center }
 
-/* ========== MAIN / ABOUT / SERVICES ========== */
-.container{ max-width: var(--maxw); margin:22px auto; padding:12px; }
+/* ========== PAGE GRID (SIDEBAR + CONTENT) ========== */
+.page-grid{ display:grid; grid-template-columns: var(--sidebar-w) 1fr; gap:24px; align-items:flex-start; padding:28px; max-width: var(--maxw); margin: 0 auto; }
 
-/* ABOUT: 2 колонки (лицо: картинка слева, текст справа) */
+/* SIDEBAR */
+.sidebar{
+  position: relative;
+}
+.side-inner{
+  position: sticky;
+  top: 28px;             /* липнет чуть ниже шапки */
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(223,246,236,0.9));
+  padding:18px;
+  border-radius:12px;
+  box-shadow: 0 6px 20px rgba(10,30,20,0.06);
+}
+.side-nav{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+.side-nav a{
+  display:block;
+  padding:10px 12px;
+  border-radius:8px;
+  color:#083b2a;
+  font-weight:700;
+  text-decoration:none;
+  background: linear-gradient(180deg, rgba(223,246,236,1), rgba(191,234,209,1));
+  border: 2px solid rgba(74,166,122,0.08);
+  box-shadow: 0 4px 10px rgba(10,50,30,0.04);
+}
+.side-nav a:hover{ transform: translateY(-2px); transition: transform .18s ease; }
+
+/* Work hours */
+.work-hours{ background: linear-gradient(180deg, rgba(245,255,250,1), rgba(223,246,236,1)); padding:12px; border-radius:8px; border:1px solid rgba(74,166,122,0.06); }
+.work-hours h4{ margin:0 0 8px 0; color:#0b3b29 }
+.work-hours ul{ list-style:none; margin:0; padding:0; font-size:14px; color:#204f3b }
+.work-hours li{ margin-bottom:6px }
+
+/* CONTENT */
+.content{ padding:0 8px; }
+
+/* разделитель-полоска между секциями (визуально удлиняет страницу) */
+.section-divider{ height:40px; border-radius:6px; margin:8px 0 22px 0;
+  background: linear-gradient(90deg, rgba(223,246,236,0), rgba(223,246,236,0.6), rgba(223,246,236,0));
+}
+
+/* ABOUT: увеличенная высота для вертикальной фотографии */
 .about{
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap:0;
-  border-radius: var(--radius);
+  border-radius: 12px;
   overflow:hidden;
   margin-bottom:18px;
-  min-height: 260px;
+  min-height: 650px; /* ~2.5× прежней высоты (было ~260px) */
   box-shadow: 0 6px 24px rgba(10,30,20,0.06);
 }
 .about-left{
   background-size: cover;
   background-position: center;
-  position:relative;
-  min-height: 260px;
 }
 .about-left::after{
   content: "";
   position:absolute; inset:0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.0) 40%, rgba(17,69,47,0.06) 60%, rgba(17,69,47,0.12) 100%);
   pointer-events:none;
 }
 .about-right{
-  padding:28px;
+  padding:36px;
   background: linear-gradient(180deg, rgba(223,246,236,1), rgba(191,234,209,1));
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
-.about-right h2{ margin:0 0 10px 0; font-size:28px; color:#0b3b29 }
+.about-right h2{ margin:0 0 10px 0; font-size:30px; color:#0b3b29 }
 .about-right p{ margin:8px 0; color:#204f3b; font-size:16px }
 
-/* SERVICES: заголовок и карточки */
+/* SERVICES */
 .services{ margin: 6px 0 20px 0; display:flex; flex-direction:column; gap:18px; }
 .services-title{ font-size:30px; color:#0d3f2a; margin:0 0 6px 0; }
-
-/* Одна услуга — высокая карточка с двумя зонами */
 .service{
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -166,50 +193,28 @@ body{
   border-right: 6px solid rgba(74,166,122,0.12);
 }
 .service.reverse .service-text{ border-left: 6px solid rgba(74,166,122,0.12); border-right: none; }
-
 .service-text h3{ margin:0; font-size:22px; color:#083b2a; font-weight:700 }
 .service-text .duration{ margin:6px 0 0 0; color:#366048 }
 .service-text .price{ margin-top:10px; font-weight:800; font-size:22px; color:var(--accent-dark) }
+.service .service-image{ background-size:cover; background-position:center; min-height:260px; }
 
-/* Зона картинки — фон */
-.service .service-image{
-  background-size:cover;
-  background-position:center;
-  min-height:260px;
-}
-
-/* ========== BOOKING & FOOTER ========== */
-.booking{
-  background: var(--accent-light);
-  padding:18px;
-  border-radius:12px;
-  box-shadow: 0 3px 10px rgba(10,20,10,0.03);
-  margin-bottom:26px;
-}
+/* BOOKING */
+.booking{ background: var(--accent-light); padding:18px; border-radius:12px; box-shadow: 0 3px 10px rgba(10,20,10,0.03); margin-bottom:26px; }
 .booking h2{ margin-top:0; color:#0d3f2a }
 .form-row{ display:flex; gap:12px }
 .form-row label{ flex:1; display:block }
 label{ font-size:14px; color:#254d3a }
-input[type="text"], textarea{
-  width:100%; padding:10px; border-radius:8px; border:1px solid #e3efe6;
-  background: #fbfffC; font-size:14px;
-}
+input[type="text"], textarea{ width:100%; padding:10px; border-radius:8px; border:1px solid #e3efe6; background: #fbfffC; font-size:14px }
 
-/* Footer */
+/* FOOTER */
 .site-footer{ text-align:center; color:var(--muted); margin:20px 0 60px 0 }
 
-/* ========== SECRET MESSAGE (overlay big center) ========== */
+/* SECRET overlay (центр, очень большая плашка) */
 #secretMessage{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:fixed;
-  left:0; top:0; right:0; bottom:0;
+  display:flex; align-items:center; justify-content:center;
+  position:fixed; left:0; top:0; right:0; bottom:0;
   background: rgba(0,0,0,0.45);
-  z-index:99999;
-  opacity:0;
-  pointer-events:none;
-  transition: opacity .25s ease;
+  z-index:99999; opacity:0; pointer-events:none; transition: opacity .25s ease;
 }
 #secretMessage::before{
   content: "Made by SerJoy";
@@ -226,20 +231,46 @@ input[type="text"], textarea{
 }
 #secretMessage.visible{ opacity:1; pointer-events:auto }
 
-/* ========== RESPONSIVE ========== */
+/* ===== MOBILE: кнопка и выдвигающаяся панель ===== */
+.mobile-toggle{
+  display:none;
+  position:fixed; left:12px; bottom:14px; z-index:9999;
+  background: var(--accent-dark); color:#fff; border:0; padding:10px 14px; border-radius:10px; font-weight:700;
+  box-shadow: 0 8px 26px rgba(10,40,20,0.2);
+}
+.mobile-sidebar{
+  display:none;
+  position:fixed; left:0; top:0; bottom:0; width:320px; max-width:85vw; z-index:100000;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(223,246,236,0.98));
+  transform: translateX(-110%); transition: transform .28s ease; padding:18px; box-shadow: 6px 0 30px rgba(0,0,0,0.18);
+  overflow:auto;
+}
+.mobile-sidebar.open{ transform: translateX(0); display:block; }
+.mobile-close{ position:absolute; right:8px; top:8px; background:transparent; border:0; font-size:20px; cursor:pointer; }
+.mobile-nav{ list-style:none; padding:0; margin-top:40px; display:flex; flex-direction:column; gap:10px; }
+.mobile-nav a{ display:block; padding:10px 12px; border-radius:8px; background: linear-gradient(180deg, rgba(223,246,236,1), rgba(191,234,209,1)); color:#083b2a; font-weight:700; text-decoration:none; }
+
+/* responsive layout */
 @media (max-width: 980px){
   .header-inner{ grid-template-columns: 220px 1fr 1fr; gap:12px; align-items:center; }
   .logo img{ width:220px; height:220px; padding:12px }
   .site-title{ font-size: clamp(32px, 8vw, 56px) }
   .owners{ transform: translateX(8px) }
+
+  .page-grid{ grid-template-columns: var(--sidebar-w) 1fr; gap:18px; padding:18px; }
+  .about{ min-height:520px; } /* чуть поменьше на экранах поменьше */
 }
-@media (max-width: 640px){
-  .header-inner{ grid-template-columns: 1fr; text-align:center; padding:12px; }
-  .right-block{ align-items:center; order:3 }
-  .logo img{ width:160px; height:160px; margin: 0 auto }
-  .site-title{ font-size:32px }
-  .contacts{ justify-content:center }
-  .about{ grid-template-columns: 1fr; }
-  .service{ grid-template-columns: 1fr; min-height:auto; }
-  .service .service-image{ min-height:180px }
+
+@media (max-width: 700px){
+  /* на мобильных убираем sidebar (скрываем), показываем кнопку */
+  .page-grid{ grid-template-columns: 1fr; padding:12px; }
+  .sidebar{ display:none; }
+  .mobile-toggle{ display:block; }
+  .mobile-sidebar{ display:block; }
+  .about{ min-height:420px; }
+  .site-title{ font-size: clamp(24px, 8vw, 36px); }
+  .logo img{ width:160px; height:160px; padding:10px; margin: 0 auto; }
+  .title-wrap{ margin-top:6px }
+  .right-block{ display:none; } /* прячем правый блок, контакты в форме/футере и в мобильном меню */
+  .section-divider{ height:28px }
 }
