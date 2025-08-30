@@ -3,29 +3,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Massagepraxis Harmonie — Igor & Valentina Osmykha</title>
+  <title>Massagepraxis Harmonie — Igor &amp; Valentina Osmykha</title>
   <meta name="description" content="Massagepraxis Harmonie in Villingen-Schwenningen — entspannende und gesundheitsfördernde Massagen. Wir bringen Harmonie für Körper und Seele." />
   <link rel="stylesheet" href="styles.css">
-  </head>
+
+  <!-- Favicon: обязательно в <head> -->
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="images/favicon-16.png" sizes="16x16" type="image/png">
+  <!-- Резервный запас: /favicon.ico в корне сайта -->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+</head>
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <!-- Логотип (SVG inline) -->
+      <!-- Логотип: используем либо <img>, либо корректный inline <svg> -->
       <div class="logo" id="logo">
-        <!-- Простой векторный логотип; при желании можно заменить на images/logo.png -->
+        <!-- Вариант A: картинка -->
         <img src="images/logo.png" alt="Harmonie logo" width="88" height="88">
+
+        <!-- Вариант B (если нужно inline SVG) - раскомментируйте и удалите <img> -->
+        <!--
+        <svg width="88" height="88" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
           <circle cx="50" cy="50" r="44" fill="#dff6ec" stroke="#9bd9b6" stroke-width="4"/>
           <path d="M30 60 C40 33, 60 33, 70 60" fill="none" stroke="#4aa67a" stroke-width="5" stroke-linecap="round"/>
           <circle cx="40" cy="40" r="3" fill="#4aa67a"/>
           <circle cx="60" cy="40" r="3" fill="#4aa67a"/>
+        </svg>
+        -->
       </div>
-
-  <!-- Favicon -->
-  <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="images/favicon-16.png" sizes="16x16" type="image/png">
-  <!-- Резерв для старых браузеров (если потом добавишь favicon.ico в корень) -->
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-</head>
 
       <div class="title-wrap">
         <h1>Massagepraxis «Harmonie»</h1>
@@ -38,6 +43,17 @@
         <a class="btn outline" href="https://wa.me/491603216028" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
+  </header>
+
+  <main>
+    <!-- Контент страницы -->
+  </main>
+
+  <footer>
+    <!-- Футер -->
+  </footer>
+</body>
+</html>
 
     <!-- Невидимая зона для секретного послания (можно кликать) -->
     <div id="secret-click-area" title="(versteckt)"></div>
@@ -201,6 +217,7 @@
   </script>
 </body>
 </html>
+
 
 
 
