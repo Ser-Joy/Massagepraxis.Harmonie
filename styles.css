@@ -1,90 +1,247 @@
-/* Базовые стили */
 :root{
-  --accent: #9bd9b6;   /* светло-зеленый основной */
-  --accent-dark: #4aa67a;
-  --muted: #6b6b6b;
+  --accent: #dff6ec;       /* светлая заливка */
+  --accent-2: #bfead1;     /* дополнительный мягкий зелёный */
+  --accent-dark: #4aa67a;  /* основной тёмно-зелёный */
+  --muted: #55615a;
   --bg: #f6fbf8;
   --card: #ffffff;
-  --maxw: 1000px;
+  --maxw: 1100px;
+  --radius: 14px;
 }
 
+/* Простейшая типографика */
 *{box-sizing:border-box}
-body{font-family:Inter, "Helvetica Neue", Arial, sans-serif; margin:0; background:var(--bg); color:#222; line-height:1.45}
-a{color:var(--accent-dark); text-decoration:none}
+body{
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  margin:0; background:var(--bg); color:#1f2b26; line-height:1.45;
+}
 
-/* HEADER */
-.site-header{background:linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.12)); padding:18px 12px; border-bottom:1px solid rgba(0,0,0,0.04)}
-.header-inner{max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; gap:16px; padding:6px}
-.logo{flex:0 0 88px; cursor:pointer}
-.title-wrap{flex:1}
-.title-wrap h1{margin:0; font-size:22px; color:var(--accent-dark)}
-.tagline{margin:6px 0 0 0; color:var(--muted)}
-.owners{margin:4px 0 0 0; font-size:13px; color:var(--muted)}
-.contacts{display:flex; gap:8px}
-.btn{background:var(--accent-dark); color:white; padding:8px 12px; border-radius:8px; display:inline-block; font-weight:600}
-.btn.outline{background:transparent; border:1px solid var(--accent-dark); color:var(--accent-dark)}
+/* ---------- HEADER / HERO ---------- */
+.site-header{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
+    url('images/hero-bg.jpg'); /* сюда вы можете положить изображение в зелёных тонах */
+  background-size: cover;
+  background-position: center;
+  padding:28px 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  color: #0b2d20;
+}
 
-/* Невидимая зона для секретного клика — делаем маленькой и негромкой */
-#secret-click-area{position:absolute; top:8px; right:8px; width:36px; height:36px; opacity:0.03; cursor:pointer; border-radius:6px}
+.header-inner{
+  max-width: var(--maxw);
+  margin:0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+}
 
-/* MAIN CONTAINER */
-.container{max-width:var(--maxw); margin:20px auto; padding:12px}
+/* логотип примерно в 3 раза больше чем было (из вашего примера) */
+.logo img{
+  width: 260px;         /* примерно ×3 от 88px */
+  height: 260px;
+  object-fit: contain;
+  display:block;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(10,50,30,0.12);
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  padding:12px;
+  cursor: pointer;
+}
 
-/* ABOUT */
-.about{background:var(--card); padding:16px; border-radius:12px; box-shadow:0 2px 6px rgba(10,10,10,0.03); margin-bottom:14px}
+/* Центр: крупный заголовок */
+.title-wrap{ text-align: center; }
+.site-title{
+  margin:0;
+  font-family: 'Montserrat', Inter, sans-serif;
+  font-weight:700;
+  font-size:48px;         /* большой, но не слишком */
+  letter-spacing:0.6px;
+  color: #083b2a;
+}
 
-/* SERVICES — шахматный порядок */
-.services{display:flex; flex-direction:column; gap:14px}
-.service{display:grid; grid-template-columns: 1fr 220px; gap:14px; align-items:center; background:var(--card); padding:12px; border-radius:10px; box-shadow:0 1px 4px rgba(0,0,0,0.03)}
-.service .service-image{height:120px; overflow:hidden; border-radius:8px}
-.service .service-image img{width:100%; height:100%; object-fit:cover; display:block}
-.service .service-text h3{margin:0 0 6px 0}
-.service .price{font-weight:800; font-size:18px; color:var(--accent-dark); margin-top:8px}
+/* Слоган прописными — чуть больше */
+.tagline{
+  margin:8px 0 0 0;
+  font-weight:600;
+  font-size:16px;
+  text-transform:uppercase;
+  color: #15533f;
+}
 
-/* reverse — картинка слева */
-.service.reverse{grid-template-columns: 220px 1fr}
+/* Владельцы — небольшим шрифтом, чуть вправо (как цитата) */
+.owners{
+  margin:8px 0 0 0;
+  font-size:13px;
+  color: var(--muted);
+  transform: translateX(18px);
+  opacity:0.95;
+}
 
-/* BOOKING */
-.booking{background:var(--card); padding:16px; border-radius:12px; margin-top:12px}
-.form-row{display:flex; gap:10px}
-.form-row label{flex:1}
-label{display:block; margin-bottom:8px; font-size:14px}
-input[type="text"], textarea{width:100%; padding:10px; border:1px solid #e6e6e6; border-radius:8px; font-size:14px}
+/* Контакты справа */
+.contacts{ display:flex; gap:10px; align-items:center; }
+.btn{
+  background: var(--accent-dark);
+  color: #fff;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:700;
+  text-decoration:none;
+  display:inline-block;
+}
+.btn.outline{
+  background: transparent;
+  color: var(--accent-dark);
+  border: 2px solid rgba(74,166,122,0.14);
+  padding:8px 12px;
+  font-weight:600;
+}
+.btn.mail{ border-radius:12px; padding:8px 10px }
 
-/* FOOTER */
-.site-footer{text-align:center; margin:18px 0 40px 0; color:var(--muted)}
+/* ---------- MAIN LAYOUT ---------- */
+.container{ max-width: var(--maxw); margin:22px auto; padding:12px; }
 
-/* SECRET MESSAGE */
+/* ABOUT: левая картинка, правая зелёная плашка; плавный переход */
+.about{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:0;
+  border-radius: var(--radius);
+  overflow:hidden;
+  margin-bottom:18px;
+  min-height: 260px;
+  box-shadow: 0 6px 24px rgba(10,30,20,0.06);
+}
+
+/* Левый блок — картинка (пусть добавите images/about-left.jpg) */
+.about-left{
+  background-size: cover;
+  background-position: center;
+  position:relative;
+  min-height: 260px;
+}
+
+/* создаём мягкий переход — наложение градиента справа */
+.about-left::after{
+  content: "";
+  position:absolute; inset:0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.0) 40%, rgba(17,69,47,0.06) 60%, rgba(17,69,47,0.12) 100%);
+  pointer-events:none;
+}
+
+/* Правый блок — зелёная плашка с текстом */
+.about-right{
+  padding:28px;
+  background: linear-gradient(180deg, rgba(223,246,236,1), rgba(191,234,209,1));
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.about-right h2{ margin:0 0 10px 0; font-size:28px; color:#0b3b29 }
+.about-right p{ margin:8px 0; color:#204f3b; font-size:16px }
+
+/* ---------- SERVICES ---------- */
+.services{ margin: 6px 0 20px 0; display:flex; flex-direction:column; gap:18px; }
+.services-title{ font-size:30px; color:#0d3f2a; margin:0 0 6px 0; }
+
+/* Одна услуга — высокая карточка (2.5×) с зелёной рамкой и двумя зонами */
+.service{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 260px;          /* увеличенная высота */
+  border-radius: 12px;
+  overflow:hidden;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(7,35,20,0.06);
+  align-items: stretch;
+}
+
+/* Текстовая зона: фон зелёный, отступы */
+.service .service-text{
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:10px;
+  background: linear-gradient(180deg, rgba(223,246,236,1), rgba(191,234,209,1));
+  border-right: 6px solid rgba(74,166,122,0.12);
+}
+
+/* Для reverse — зеркалируем */
+.service.reverse{ grid-template-columns: 1fr 1fr; direction:ltr; }
+.service.reverse .service-text{ border-left: 6px solid rgba(74,166,122,0.12); border-right: none; }
+
+/* Заголовки и цена */
+.service-text h3{ margin:0; font-size:22px; color:#083b2a; font-weight:700 }
+.service-text .duration{ margin:6px 0 0 0; color:#366048 }
+.service-text .price{ margin-top:10px; font-weight:800; font-size:22px; color:var(--accent-dark) }
+
+/* Картинка — используется как фон; вы загрузите соответствующую картинку */
+.service .service-image{
+  background-size:cover;
+  background-position:center;
+  min-height:260px;
+}
+
+/* для reverse — поменять порядок визуально (картинка слева) */
+.service.reverse{ direction:ltr } /* keep natural order, images set via HTML order */
+
+/* ---------- BOOKING ---------- */
+.booking{
+  background: var(--card);
+  padding:18px;
+  border-radius:12px;
+  box-shadow: 0 3px 10px rgba(10,20,10,0.03);
+  margin-bottom:26px;
+}
+.booking h2{ margin-top:0; color:#0d3f2a }
+.form-row{ display:flex; gap:12px }
+.form-row label{ flex:1; display:block }
+label{ font-size:14px; color:#254d3a }
+input[type="text"], textarea{
+  width:100%; padding:10px; border-radius:8px; border:1px solid #e3efe6;
+  background: #fbfffC; font-size:14px;
+}
+
+/* ---------- FOOTER ---------- */
+.site-footer{ text-align:center; color:var(--muted); margin:20px 0 60px 0 }
+
+/* ---------- SECRET MESSAGE (улучшенный дизайн) ---------- */
 #secretMessage{
-  display:none;
+  display:block;
   position:fixed;
-  left:50%; top:20%;
-  transform:translateX(-50%);
-  background:rgba(20,20,20,0.9);
-  color:white; padding:16px 22px; border-radius:10px; font-weight:700; z-index:9999;
-  opacity:0; transition:opacity .6s ease;
+  right:18px; bottom:18px;
+  background: linear-gradient(135deg, rgba(74,166,122,0.95), rgba(34,128,99,0.95));
+  color:white;
+  padding:10px 14px;
+  border-radius:10px;
+  box-shadow: 0 10px 30px rgba(10,30,20,0.25);
+  transform: translateY(12px) scale(0.98);
+  opacity:0; pointer-events:none;
+  transition: all .35s ease;
+  font-weight:700;
+  letter-spacing:0.6px;
+  z-index:9999;
+}
+#secretMessage.visible{ opacity:1; transform: translateY(0) scale(1); pointer-events:auto }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px){
+  .header-inner{ grid-template-columns: 1fr; text-align:center; gap:14px; }
+  .logo img{ width:180px; height:180px; margin:0 auto; }
+  .title-wrap{ order:2 }
+  .contacts{ order:3; justify-content:center; flex-wrap:wrap }
+  .about{ grid-template-columns: 1fr; min-height: auto }
+  .about-left{ min-height:200px }
+  .about-right{ padding:18px }
+  .service{ grid-template-columns: 1fr; min-height: auto }
+  .service .service-image{ min-height:180px }
+  .site-title{ font-size:34px }
 }
 
-/* RESPONSIVE: Mobile */
-@media (max-width:800px){
-  .header-inner{flex-direction:column; align-items:flex-start; gap:10px}
-  .contacts{width:100%; justify-content:flex-start; gap:8px}
-  .service{grid-template-columns: 1fr; gap:10px}
-  .service.reverse{grid-template-columns: 1fr}
-  .service .service-image{height:180px}
-  .form-row{flex-direction:column}
-  .title-wrap h1{font-size:20px}
+@media (max-width: 480px){
+  .logo img{ width:140px; height:140px }
+  .site-title{ font-size:26px }
+  .tagline{ font-size:13px }
 }
-
-.logo img {
-  display: block;
-  width: 88px;
-  height: 88px;
-  object-fit: cover;
-  border-radius: 50%; /* делает круг */
-  border: 2px solid rgba(0,0,0,0.05); /* тонкая граница (опционально) */
-}
-
-
-/* Дополнительная плавность для кнопок */
-button.btn{border:none; cursor:pointer}
