@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="de">
 <head>
@@ -7,7 +6,7 @@
   <title>Massagepraxis Harmonie — Igor &amp; Valentina Osmykha</title>
   <meta name="description" content="Massagepraxis Harmonie in Villingen-Schwenningen — entspannende und gesundheitsfördernde Massagen." />
 
-  <!-- Шрифты: Inter + Montserrat для некоторых заголовков; Arial Black используем из системы -->
+  <!-- Google fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
@@ -20,11 +19,10 @@
 <body>
 
   <!-- ===== HEADER / HERO ===== -->
-  <header class="site-header">
+  <header class="site-header" role="banner">
     <div class="header-inner">
       <!-- Логотип слева -->
       <div class="logo" id="logo" title="Massagepraxis Harmonie">
-        <!-- Положите сюда images/logo.png (большой логотип) -->
         <img src="images/logo.png" alt="Harmonie logo">
       </div>
 
@@ -47,98 +45,179 @@
     </div>
   </header>
 
-  <!-- ===== MAIN CONTENT ===== -->
-  <main class="container">
+  <!-- ===== MAIN LAYOUT: SIDEBAR (nav + hours) + CONTENT ===== -->
+  <main class="page-grid container" role="main">
+    <!-- LEFT SIDEBAR: навигация + часы работы, будет sticky -->
+    <aside class="sidebar">
+      <nav class="side-inner" aria-label="Seiten-Navigation">
+        <ul class="side-nav">
+          <li><a href="#about">Über uns</a></li>
+          <li><a href="#services">Leistungen &amp; Preise</a></li>
+          <li><a href="#booking">Termin vereinbaren</a></li>
+        </ul>
 
-    <!-- ABOUT: картинка слева, плашка справа -->
-    <section class="about">
-      <!-- Положите images/about-left.jpg -->
-      <div class="about-left" style="background-image: url('images/about-left.jpg');" role="img" aria-label="Harmonische Illustration"></div>
-
-      <div class="about-right">
-        <h2>Über uns</h2>
-        <p>Wir sind ein Ehepaar mit langjähriger Erfahrung im Bereich gesundheitsfördernder und entspannender Massagen. Unser Ziel ist es, Ihre Kräfte wiederherzustellen, Spannungen zu lösen und das allgemeine Wohlbefinden zu steigern.</p>
-        <p>Wir arbeiten mit sanften, individuell angepassten Techniken, sicher und wirksam für Menschen jeden Alters.</p>
-      </div>
-    </section>
-
-    <!-- SERVICES: крупные карточки, шахматный порядок -->
-    <section class="services">
-      <h2 class="services-title">Leistungen &amp; Preise</h2>
-
-      <!-- Service 1: текст слева, картинка справа -->
-      <article class="service">
-        <div class="service-text">
-          <h3>Rücken- und Nackenmassage</h3>
-          <p class="duration">Dauer: 40 Minuten</p>
-          <div class="price">30 €</div>
+        <div class="work-hours" aria-label="Öffnungszeiten">
+          <h4>Öffnungszeiten</h4>
+          <ul>
+            <li><strong>Montag:</strong> 11:00–15:30</li>
+            <li><strong>Dienstag:</strong> 11:00–15:30</li>
+            <li><strong>Mittwoch:</strong> 11:00–15:30; 17:00–20:00</li>
+            <li><strong>Donnerstag:</strong> 11:00–15:30</li>
+            <li><strong>Freitag:</strong> 09:00–12:00</li>
+            <li><strong>Samstag:</strong> freier Tag</li>
+            <li><strong>Sonntag:</strong> freier Tag</li>
+          </ul>
         </div>
-        <div class="service-image" style="background-image: url('images/service1.jpg');" aria-hidden="true"></div>
-      </article>
+      </nav>
+    </aside>
 
-      <!-- Service 2: зеркально (картинка слева, текст справа) -->
-      <article class="service reverse">
-        <div class="service-image" style="background-image: url('images/service2.jpg');" aria-hidden="true"></div>
-        <div class="service-text">
-          <h3>Rücken- und Beinmassage</h3>
-          <p class="duration">Dauer: 60 Minuten</p>
-          <div class="price">45 €</div>
+    <!-- CENTER: основной контент -->
+    <section class="content">
+      <!-- divider (под шапкой) -->
+      <div class="section-divider"></div>
+
+      <!-- ABOUT -->
+      <section id="about" class="about">
+        <!-- Левый блок — большая вертикальная область для фото -->
+        <div class="about-left" style="background-image: url('images/about-left.jpg');" role="img" aria-label="Harmonische Illustration"></div>
+
+        <!-- Правая плашка с текстом (зеленый фон) -->
+        <div class="about-right">
+          <h2>Über uns</h2>
+          <p>Wir sind ein Ehepaar mit langjähriger Erfahrung im Bereich gesundheitsfördernder und entspannender Massagen. Unser Ziel ist es, Ihre Kräfte wiederherzustellen, Spannungen zu lösen und das allgemeine Wohlbefinden zu steigern.</p>
+          <p>Wir arbeiten mit sanften, individuell angepassten Techniken — sicher und wirksam für Menschen jeden Alters.</p>
         </div>
-      </article>
+      </section>
 
-      <!-- Service 3: как первая -->
-      <article class="service">
-        <div class="service-text">
-          <h3>Ganzkörpermassage</h3>
-          <p class="duration">Dauer: 90 Minuten</p>
-          <div class="price">60 €</div>
-        </div>
-        <div class="service-image" style="background-image: url('images/service3.jpg');" aria-hidden="true"></div>
-      </article>
+      <!-- разделитель -->
+      <div class="section-divider"></div>
 
-      <!-- пример дополнительных услуг (копируй / меняй) -->
-      <!--
-      <article class="service reverse">
-        <div class="service-image" style="background-image: url('images/service4.jpg');"></div>
-        <div class="service-text"> ... </div>
-      </article>
-      -->
+      <!-- SERVICES -->
+      <section id="services" class="services">
+        <h2 class="services-title">Leistungen &amp; Preise</h2>
 
-    </section>
+        <article class="service">
+          <div class="service-text">
+            <h3>Rücken- und Nackenmassage</h3>
+            <p class="duration">Dauer: 40 Minuten</p>
+            <div class="price">30 €</div>
+          </div>
+          <div class="service-image" style="background-image: url('images/service1.jpg');" aria-hidden="true"></div>
+        </article>
 
-    <!-- BOOKING -->
-    <section class="booking">
-      <h2>Termine &amp; Kontakt</h2>
-      <p>Für Termine rufen Sie uns an, schreiben Sie per WhatsApp oder senden Sie eine E-Mail.</p>
+        <article class="service reverse">
+          <div class="service-image" style="background-image: url('images/service2.jpg');" aria-hidden="true"></div>
+          <div class="service-text">
+            <h3>Rücken- und Beinmassage</h3>
+            <p class="duration">Dauer: 60 Minuten</p>
+            <div class="price">45 €</div>
+          </div>
+        </article>
 
-      <form id="contact-form" action="https://formspree.io/f/xgvlkegy" method="POST">
-        <div class="form-row">
-          <label>Ihr Name
-            <input type="text" name="name" required>
+        <article class="service">
+          <div class="service-text">
+            <h3>Ganzkörpermassage</h3>
+            <p class="duration">Dauer: 90 Minuten</p>
+            <div class="price">60 €</div>
+          </div>
+          <div class="service-image" style="background-image: url('images/service3.jpg');" aria-hidden="true"></div>
+        </article>
+
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- BOOKING -->
+      <section id="booking" class="booking">
+        <h2>Termine &amp; Kontakt</h2>
+        <p>Für Termine rufen Sie uns an, schreiben Sie per WhatsApp oder senden Sie eine E-Mail.</p>
+
+        <form id="contact-form" action="https://formspree.io/f/xgvlkegy" method="POST" class="contact-form">
+          <div class="form-row">
+            <label>Ihr Name
+              <input type="text" name="name" required>
+            </label>
+            <label>Telefon oder E-Mail
+              <input type="text" name="contact" required>
+            </label>
+          </div>
+          <label>Ihre Nachricht
+            <textarea name="message" rows="4" required></textarea>
           </label>
-          <label>Telefon oder E-Mail
-            <input type="text" name="contact" required>
-          </label>
-        </div>
-        <label>Ihre Nachricht
-          <textarea name="message" rows="4" required></textarea>
-        </label>
-        <button class="btn" type="submit">Absenden</button>
-      </form>
-    </section>
+          <button class="btn" type="submit">Absenden</button>
+        </form>
+      </section>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <p>© Massagepraxis «Harmonie» — Igor &amp; Valentina Osmykha — Villingen-Schwenningen</p>
-      <p>Tel: <a href="tel:+491603216028">+49 160 3216028</a> — E-Mail: <a href="mailto:post.Harmonie@gmx.de">post.Harmonie@gmx.de</a></p>
-    </footer>
+      <div class="section-divider"></div>
+
+      <footer class="site-footer">
+        <p>© Massagepraxis «Harmonie» — Igor &amp; Valentina Osmykha — Villingen-Schwenningen</p>
+        <p>Tel: <a href="tel:+491603216028">+49 160 3216028</a> — E-Mail: <a href="mailto:post.Harmonie@gmx.de">post.Harmonie@gmx.de</a></p>
+      </footer>
+    </section>
   </main>
 
-  <!-- ===== SECRET MESSAGE (overlay, центр, БОЛЬШОЕ) ===== -->
+  <!-- MOBILE: кнопка для показа боковой панели (на маленьких экранах) -->
+  <button id="mobileToggle" class="mobile-toggle" aria-expanded="false" aria-controls="mobileSidebar">
+    ☰ Menü
+  </button>
+
+  <div id="mobileSidebar" class="mobile-sidebar" aria-hidden="true">
+    <button id="mobileClose" class="mobile-close" aria-label="Schließen">✕</button>
+    <nav>
+      <ul class="mobile-nav">
+        <li><a href="#about" class="mobile-link">Über uns</a></li>
+        <li><a href="#services" class="mobile-link">Leistungen &amp; Preise</a></li>
+        <li><a href="#booking" class="mobile-link">Termin vereinbaren</a></li>
+      </ul>
+
+      <div class="mobile-hours">
+        <h4>Öffnungszeiten</h4>
+        <ul>
+          <li><strong>Montag:</strong> 11:00–15:30</li>
+          <li><strong>Dienstag:</strong> 11:00–15:30</li>
+          <li><strong>Mittwoch:</strong> 11:00–15:30; 17:00–20:00</li>
+          <li><strong>Donnerstag:</strong> 11:00–15:30</li>
+          <li><strong>Freitag:</strong> 09:00–12:00</li>
+          <li><strong>Samstag:</strong> freier Tag</li>
+          <li><strong>Sonntag:</strong> freier Tag</li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- SECRET MESSAGE (overlay center, big) -->
   <div id="secretMessage" aria-hidden="true"></div>
 
-  <!-- Скрипт: 7 кликов по логотипу или последовательность 'harmonie' -->
+  <!-- JS: мобильное меню и показ секретного сообщения -->
   <script>
+    // mobile sidebar toggle
+    (function(){
+      const toggle = document.getElementById('mobileToggle');
+      const sidebar = document.getElementById('mobileSidebar');
+      const closeBtn = document.getElementById('mobileClose');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      function openSidebar(){
+        sidebar.classList.add('open');
+        sidebar.setAttribute('aria-hidden','false');
+        toggle.setAttribute('aria-expanded','true');
+      }
+      function closeSidebar(){
+        sidebar.classList.remove('open');
+        sidebar.setAttribute('aria-hidden','true');
+        toggle.setAttribute('aria-expanded','false');
+      }
+
+      toggle.addEventListener('click', openSidebar);
+      closeBtn.addEventListener('click', closeSidebar);
+      mobileLinks.forEach(a => a.addEventListener('click', closeSidebar));
+
+      // close on ESC
+      window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeSidebar(); });
+    })();
+
+    // secret message logic (7 clicks or secret sequence)
     (function(){
       const area = document.getElementById('logo');
       const msg = document.getElementById('secretMessage');
@@ -146,15 +225,15 @@
 
       function showMessage(){
         msg.classList.add('visible');
-        // автоматическое скрытие через 6 секунд
-        setTimeout(()=> msg.classList.remove('visible'), 6000);
+        msg.setAttribute('aria-hidden','false');
+        setTimeout(()=> { msg.classList.remove('visible'); msg.setAttribute('aria-hidden','true'); }, 6000);
       }
 
       function registerClick(){
         clicks++;
         if(timer) clearTimeout(timer);
         timer = setTimeout(()=> { clicks = 0; }, 5000);
-        if(clicks >= 15){
+        if(clicks >= 7){
           showMessage();
           clicks = 0;
         }
@@ -164,14 +243,14 @@
       const seq = ['h','a','r','m','o','n','i','e'];
       let idx = 0;
       window.addEventListener('keydown', (e)=>{
-        if(e.key.toLowerCase() === seq[idx]){
-          idx++;
-          if(idx === seq.length){ showMessage(); idx = 0; }
-        } else idx = 0;
+        if(e.key.toLowerCase() === seq[idx]){ idx++; if(idx === seq.length){ showMessage(); idx = 0; } } else idx = 0;
       });
     })();
-  </script>
 
+    // smooth scroll polyfill for anchor navigation (modern browsers support scrollBehavior)
+    (function(){
+      document.documentElement.style.scrollBehavior = 'smooth';
+    })();
+  </script>
 </body>
 </html>
-
