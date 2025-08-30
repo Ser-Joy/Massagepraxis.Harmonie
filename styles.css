@@ -1,247 +1,156 @@
 :root{
-  --accent: #dff6ec;       /* светлая заливка */
-  --accent-2: #bfead1;     /* дополнительный мягкий зелёный */
-  --accent-dark: #4aa67a;  /* основной тёмно-зелёный */
-  --muted: #55615a;
+  --accent-light: #eaf7ec;
+  --accent-mid: #cfefe0;
+  --accent: #bfead1;
+  --accent-dark: #4aa67a;
+  --muted: #43584b;
   --bg: #f6fbf8;
-  --card: #ffffff;
-  --maxw: 1100px;
+  --maxw: 1200px;
   --radius: 14px;
 }
 
-/* Простейшая типографика */
+/* базовые правила */
 *{box-sizing:border-box}
 body{
   font-family: Inter, "Helvetica Neue", Arial, sans-serif;
-  margin:0; background:var(--bg); color:#1f2b26; line-height:1.45;
+  margin:0; background:var(--bg); color:#142a20; line-height:1.45;
 }
 
-/* ---------- HEADER / HERO ---------- */
+/* ============ HEADER / HERO ============ */
+/* фон шапки: сложный градиент + лёгкая текстура (без файла) — плавный перелив */
 .site-header{
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
-    url('images/hero-bg.jpg'); /* сюда вы можете положить изображение в зелёных тонах */
-  background-size: cover;
-  background-position: center;
-  padding:28px 12px;
+    radial-gradient(1200px 400px at 10% 10%, rgba(255,255,255,0.6), rgba(255,255,255,0) 30%),
+    linear-gradient(180deg, rgba(235,250,241,1), rgba(217,245,229,1));
   border-bottom: 1px solid rgba(0,0,0,0.06);
-  color: #0b2d20;
+  padding:26px 12px;
 }
 
+/* внутренний контейнер — сетка 3 колонки */
 .header-inner{
   max-width: var(--maxw);
-  margin:0 auto;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 320px 1fr 360px; /* логотип / центр / правая колонка */
   gap: 18px;
   align-items: center;
 }
 
-/* логотип примерно в 3 раза больше чем было (из вашего примера) */
+/* Логотип большой, круглый/с коробкой */
 .logo img{
-  width: 260px;         /* примерно ×3 от 88px */
-  height: 260px;
+  width: 300px; /* регулируйте: примерно ×3 от исходного */
+  height: 300px;
   object-fit: contain;
   display:block;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(10,50,30,0.12);
-  background: linear-gradient(180deg, var(--accent), var(--accent-2));
-  padding:12px;
-  cursor: pointer;
+  border-radius: 50%;
+  padding:18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(223,246,236,0.9));
+  box-shadow: 0 18px 40px rgba(20,60,30,0.12);
+  border: 6px solid rgba(255,255,255,0.9);
+  cursor:pointer;
 }
 
-/* Центр: крупный заголовок */
-.title-wrap{ text-align: center; }
+/* центр: крупный заголовок (Arial Black / запасной Arial) */
+.title-wrap{ text-align:center; position:relative; }
 .site-title{
   margin:0;
-  font-family: 'Montserrat', Inter, sans-serif;
-  font-weight:700;
-  font-size:48px;         /* большой, но не слишком */
-  letter-spacing:0.6px;
-  color: #083b2a;
+  font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+  font-weight:900;
+  font-size: clamp(42px, 6vw, 84px); /* responsive большой размер */
+  color: #5ea73a;
+  /* текстовая тень (аналог вашего макета) */
+  text-shadow:
+     3px 3px 0 rgba(0,0,0,0.08),
+     0 10px 20px rgba(0,0,0,0.08);
+  line-height:0.95;
 }
 
-/* Слоган прописными — чуть больше */
+/* слоган — стиль Gabriola (если он есть в системе), иначе fallback italic serif */
 .tagline{
-  margin:8px 0 0 0;
+  margin:12px 0 0 0;
+  font-family: "Gabriola", "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
   font-weight:600;
-  font-size:16px;
-  text-transform:uppercase;
-  color: #15533f;
+  font-size: clamp(16px, 2.2vw, 22px);
+  color:#163d25;
+  letter-spacing: 0.8px;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.4);
 }
 
-/* Владельцы — небольшим шрифтом, чуть вправо (как цитата) */
+/* Правая колонка: владельцы и контакты */
+.right-block{ display:flex; flex-direction:column; align-items:flex-start; gap:14px; justify-self:end; }
 .owners{
-  margin:8px 0 0 0;
-  font-size:13px;
-  color: var(--muted);
-  transform: translateX(18px);
-  opacity:0.95;
+  margin:0;
+  font-size:16px;
+  color:var(--muted);
+  transform: translateX(26px); /* сдвиг вправо, как в скрине */
 }
+.owners-small{ display:block; font-size:14px; color:#304b3f; opacity:0.95 }
 
 /* Контакты справа */
-.contacts{ display:flex; gap:10px; align-items:center; }
+.contacts{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
 .btn{
   background: var(--accent-dark);
   color: #fff;
-  padding:10px 14px;
-  border-radius:10px;
-  font-weight:700;
+  padding:12px 16px;
+  border-radius:12px;
+  font-weight:800;
   text-decoration:none;
   display:inline-block;
+  box-shadow: 0 6px 14px rgba(10,50,30,0.12), inset 0 -2px 0 rgba(0,0,0,0.06);
 }
 .btn.outline{
-  background: transparent;
-  color: var(--accent-dark);
-  border: 2px solid rgba(74,166,122,0.14);
-  padding:8px 12px;
-  font-weight:600;
-}
-.btn.mail{ border-radius:12px; padding:8px 10px }
-
-/* ---------- MAIN LAYOUT ---------- */
-.container{ max-width: var(--maxw); margin:22px auto; padding:12px; }
-
-/* ABOUT: левая картинка, правая зелёная плашка; плавный переход */
-.about{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:0;
-  border-radius: var(--radius);
-  overflow:hidden;
-  margin-bottom:18px;
-  min-height: 260px;
-  box-shadow: 0 6px 24px rgba(10,30,20,0.06);
-}
-
-/* Левый блок — картинка (пусть добавите images/about-left.jpg) */
-.about-left{
-  background-size: cover;
-  background-position: center;
-  position:relative;
-  min-height: 260px;
-}
-
-/* создаём мягкий переход — наложение градиента справа */
-.about-left::after{
-  content: "";
-  position:absolute; inset:0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.0) 40%, rgba(17,69,47,0.06) 60%, rgba(17,69,47,0.12) 100%);
-  pointer-events:none;
-}
-
-/* Правый блок — зелёная плашка с текстом */
-.about-right{
-  padding:28px;
-  background: linear-gradient(180deg, rgba(223,246,236,1), rgba(191,234,209,1));
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-.about-right h2{ margin:0 0 10px 0; font-size:28px; color:#0b3b29 }
-.about-right p{ margin:8px 0; color:#204f3b; font-size:16px }
-
-/* ---------- SERVICES ---------- */
-.services{ margin: 6px 0 20px 0; display:flex; flex-direction:column; gap:18px; }
-.services-title{ font-size:30px; color:#0d3f2a; margin:0 0 6px 0; }
-
-/* Одна услуга — высокая карточка (2.5×) с зелёной рамкой и двумя зонами */
-.service{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 260px;          /* увеличенная высота */
-  border-radius: 12px;
-  overflow:hidden;
-  background: #fff;
-  box-shadow: 0 6px 18px rgba(7,35,20,0.06);
-  align-items: stretch;
-}
-
-/* Текстовая зона: фон зелёный, отступы */
-.service .service-text{
-  padding:24px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:10px;
-  background: linear-gradient(180deg, rgba(223,246,236,1), rgba(191,234,209,1));
-  border-right: 6px solid rgba(74,166,122,0.12);
-}
-
-/* Для reverse — зеркалируем */
-.service.reverse{ grid-template-columns: 1fr 1fr; direction:ltr; }
-.service.reverse .service-text{ border-left: 6px solid rgba(74,166,122,0.12); border-right: none; }
-
-/* Заголовки и цена */
-.service-text h3{ margin:0; font-size:22px; color:#083b2a; font-weight:700 }
-.service-text .duration{ margin:6px 0 0 0; color:#366048 }
-.service-text .price{ margin-top:10px; font-weight:800; font-size:22px; color:var(--accent-dark) }
-
-/* Картинка — используется как фон; вы загрузите соответствующую картинку */
-.service .service-image{
-  background-size:cover;
-  background-position:center;
-  min-height:260px;
-}
-
-/* для reverse — поменять порядок визуально (картинка слева) */
-.service.reverse{ direction:ltr } /* keep natural order, images set via HTML order */
-
-/* ---------- BOOKING ---------- */
-.booking{
-  background: var(--card);
-  padding:18px;
-  border-radius:12px;
-  box-shadow: 0 3px 10px rgba(10,20,10,0.03);
-  margin-bottom:26px;
-}
-.booking h2{ margin-top:0; color:#0d3f2a }
-.form-row{ display:flex; gap:12px }
-.form-row label{ flex:1; display:block }
-label{ font-size:14px; color:#254d3a }
-input[type="text"], textarea{
-  width:100%; padding:10px; border-radius:8px; border:1px solid #e3efe6;
-  background: #fbfffC; font-size:14px;
-}
-
-/* ---------- FOOTER ---------- */
-.site-footer{ text-align:center; color:var(--muted); margin:20px 0 60px 0 }
-
-/* ---------- SECRET MESSAGE (улучшенный дизайн) ---------- */
-#secretMessage{
-  display:block;
-  position:fixed;
-  right:18px; bottom:18px;
-  background: linear-gradient(135deg, rgba(74,166,122,0.95), rgba(34,128,99,0.95));
-  color:white;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(239,251,241,0.92));
+  color: #083b2a;
+  border: 2px solid rgba(74,166,122,0.12);
   padding:10px 14px;
-  border-radius:10px;
-  box-shadow: 0 10px 30px rgba(10,30,20,0.25);
-  transform: translateY(12px) scale(0.98);
-  opacity:0; pointer-events:none;
-  transition: all .35s ease;
   font-weight:700;
-  letter-spacing:0.6px;
-  z-index:9999;
 }
-#secretMessage.visible{ opacity:1; transform: translateY(0) scale(1); pointer-events:auto }
+.btn.mail{ width:100%; text-align:center }
 
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 900px){
-  .header-inner{ grid-template-columns: 1fr; text-align:center; gap:14px; }
-  .logo img{ width:180px; height:180px; margin:0 auto; }
-  .title-wrap{ order:2 }
-  .contacts{ order:3; justify-content:center; flex-wrap:wrap }
-  .about{ grid-template-columns: 1fr; min-height: auto }
-  .about-left{ min-height:200px }
-  .about-right{ padding:18px }
-  .service{ grid-template-columns: 1fr; min-height: auto }
-  .service .service-image{ min-height:180px }
-  .site-title{ font-size:34px }
+/* ============ SECRET MESSAGE (центр, очень большой) ============ */
+#secretMessage{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:fixed;
+  left:0; top:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.45); /* затемняющий фон */
+  z-index:99999;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .25s ease;
 }
 
-@media (max-width: 480px){
-  .logo img{ width:140px; height:140px }
-  .site-title{ font-size:26px }
-  .tagline{ font-size:13px }
+/* внутренний большой яркий бейдж */
+#secretMessage::before{
+  content: "Made by SerJoy";
+  display:inline-block;
+  padding: 40px 60px;
+  border-radius:18px;
+  background: linear-gradient(135deg, #6fd07a, #2b8f5a);
+  color: #fff;
+  font-weight:900;
+  font-family: "Arial Black", "Arial", sans-serif;
+  font-size: clamp(28px, 6vw, 72px); /* очень большой, масштабируется */
+  box-shadow: 0 30px 80px rgba(10,40,20,0.45), 0 8px 18px rgba(0,0,0,0.25);
+  transform: translateY(-6px);
+}
+
+/* видимое состояние */
+#secretMessage.visible{ opacity:1; pointer-events:auto }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 980px){
+  .header-inner{ grid-template-columns: 200px 1fr 1fr; gap:12px; align-items:center; }
+  .logo img{ width:220px; height:220px; padding:12px }
+  .site-title{ font-size: clamp(32px, 8vw, 56px) }
+  .owners{ transform: translateX(8px) }
+}
+@media (max-width: 640px){
+  .header-inner{ grid-template-columns: 1fr; text-align:center; padding:12px; }
+  .right-block{ align-items:center; order:3 }
+  .logo img{ width:160px; height:160px; margin: 0 auto }
+  .site-title{ font-size:32px }
+  .contacts{ justify-content:center }
 }
