@@ -1,13 +1,14 @@
-/* styles.css — обновлённый: фиксированные боковые панели у краёв экрана + full-width dividers + улучшенные кнопки */
+/* styles.css — изменённая версия: мобильные фото под текст + фикс. кнопка меню */
+
 /* ПАЛИТРА */
 :root{
   --bg: #f6fbf8;
   --accent-light: #eaf7ec;
   --accent-mid: #cfefe0;
   --accent: #bfead1;
-  --accent-dark: #2a7a43;     /* скорректированный тёмно-зелёный для гармонии */
+  --accent-dark: #2a7a43;
   --muted: #43584b;
-  --title-color: #235c3a;     /* новый цвет для заголовка (под палитру) */
+  --title-color: #235c3a;
   --sidebar-w: 260px;
   --gutter: 28px;
   --radius: 14px;
@@ -24,7 +25,7 @@ body{
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
 
-/* ---------- FIXED LEFT NAV (край экрана) ---------- */
+/* ---------- FIXED LEFT NAV ---------- */
 .fixed-left{
   position:fixed;
   left:0;
@@ -36,6 +37,7 @@ body{
   align-items:center;
   justify-content:flex-start;
   pointer-events:auto;
+  z-index:50;
 }
 .left-nav{
   width:100%;
@@ -58,7 +60,7 @@ body{
 }
 .left-nav a:hover{ transform: translateY(-4px); transition: transform .18s ease; }
 
-/* ---------- FIXED RIGHT HOURS (край экрана справа) ---------- */
+/* ---------- FIXED RIGHT HOURS ---------- */
 .fixed-right{
   position:fixed;
   right:0;
@@ -69,6 +71,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:flex-end;
+  z-index:50;
 }
 .hours-card{
   width:100%;
@@ -84,11 +87,13 @@ body{
 
 /* ---------- HEADER ---------- */
 .site-header{
-  padding:22px calc(var(--sidebar-w) + var(--gutter)); /* учёт фикс. боков */
+  padding:22px calc(var(--sidebar-w) + var(--gutter));
   background:
     radial-gradient(1200px 400px at 10% 10%, rgba(255,255,255,0.6), rgba(255,255,255,0) 30%),
     linear-gradient(180deg, rgba(235,250,241,1), rgba(217,245,229,1));
   border-bottom: 1px solid rgba(0,0,0,0.06);
+  position:relative;
+  z-index:40;
 }
 .header-inner{
   max-width: calc(1200px - var(--sidebar-w)*0.5);
@@ -112,7 +117,7 @@ body{
   margin:0;
   font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
   font-weight:900;
-  color:var(--title-color); /* обновлённый цвет заголовка */
+  color:var(--title-color);
   font-size: clamp(32px, 5.5vw, 72px);
   line-height:0.95;
   text-shadow: 2px 4px 8px rgba(0,0,0,0.05);
@@ -124,8 +129,6 @@ body{
   color:#163d25;
   font-size:clamp(14px, 1.8vw, 20px);
 }
-
-/* Header contacts (right side) */
 .header-contacts{ display:flex; gap:10px; align-items:center; }
 .btn{
   border:0; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center;
@@ -143,30 +146,31 @@ body{
   color:var(--title-color);
   border: 1px solid rgba(74,166,122,0.08);
 }
+
+/* mobile toggle fixed by default hidden */
 .mobile-toggle{ display:none; }
 
 /* ---------- FULL-WIDTH DIVIDER ---------- */
 .full-divider{
   width:100vw;
-  margin-left: calc(-50vw + 50%); /* центрируем на всю ширину */
+  margin-left: calc(-50vw + 50%);
   height:36px;
   background: linear-gradient(90deg, rgba(223,246,236,0), rgba(191,234,209,0.6), rgba(223,246,236,0));
 }
 
-/* ---------- MAIN CONTENT (between sidebars) ---------- */
-/* main-content uses left/right gutter to avoid fixed sidebars overlapping */
+/* ---------- MAIN CONTENT ---------- */
 .main-content{ padding: 0; margin: 0; }
 .container{
-  max-width: 980px;                 /* content width */
+  max-width: 980px;
   margin: 30px auto;
   padding: 0 20px;
 }
 
-/* ABOUT (tall vertical area for photo) */
+/* ABOUT */
 .about{
   display:grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 650px;   /* 2.5× */
+  min-height: 650px;
   border-radius: 14px;
   overflow:hidden;
   box-shadow: 0 10px 30px rgba(10,30,20,0.04);
@@ -175,46 +179,35 @@ body{
 .about-right{ padding:48px; background: linear-gradient(180deg, rgba(223,246,236,1), rgba(191,234,209,1)); }
 .about-right h2{ margin-top:0; color:var(--title-color); font-size:30px; }
 
-/* SERVICES */
+/* SERVICES etc (unchanged) */
 .services{ margin-top:32px; display:flex; flex-direction:column; gap:22px; }
 .services-title{ font-size:30px; color:var(--title-color); margin-bottom:6px; }
-.service{
-  display:grid; grid-template-columns:1fr 1fr; min-height:260px; border-radius:12px; overflow:hidden;
-  box-shadow: 0 8px 20px rgba(10,30,20,0.04);
-}
+.service{ display:grid; grid-template-columns:1fr 1fr; min-height:260px; border-radius:12px; overflow:hidden; box-shadow: 0 8px 20px rgba(10,30,20,0.04); }
 .service .service-text{ padding:28px; background: linear-gradient(180deg, rgba(223,246,236,1), rgba(191,234,209,1)); border-right:6px solid rgba(74,166,122,0.08); }
 .service.reverse .service-text{ border-left:6px solid rgba(74,166,122,0.08); border-right:none; }
 .service-text h3{ margin:0; color:#083b2a; font-size:22px; }
-
-/* Booking */
 .booking{ background:var(--accent-light); padding:18px; border-radius:12px; margin-top:10px; box-shadow: 0 6px 18px rgba(10,20,10,0.03); }
-
-/* Footer */
 .site-footer{ margin:36px 0 60px; color:var(--muted); text-align:center; }
 
-/* SECRET MESSAGE overlay (center big) */
+/* SECRET overlay */
 #secretMessage{ display:flex; align-items:center; justify-content:center; position:fixed; inset:0; background: rgba(0,0,0,0.45); z-index:99999; opacity:0; pointer-events:none; transition: opacity .25s ease; }
-#secretMessage::before{
-  content:"Made by SerJoy";
-  display:inline-block; background: linear-gradient(135deg,#67d07a,#1f7a43);
-  color:#fff; padding:36px 64px; border-radius:18px; font-weight:900; font-family:"Arial Black","Arial",sans-serif;
-  font-size:clamp(28px,6vw,72px); box-shadow: 0 30px 80px rgba(10,40,20,0.45);
-}
+#secretMessage::before{ content:"Made by SerJoy"; display:inline-block; background: linear-gradient(135deg,#67d07a,#1f7a43); color:#fff; padding:36px 64px; border-radius:18px; font-weight:900; font-family:"Arial Black","Arial",sans-serif; font-size:clamp(28px,6vw,72px); box-shadow: 0 30px 80px rgba(10,40,20,0.45); }
 #secretMessage.visible{ opacity:1; pointer-events:auto; }
 
 /* ---------- MOBILE / RESPONSIVE ---------- */
 @media (max-width: 980px){
-  /* hide fixed sidebars on medium screens so layout breathes */
-  .fixed-left, .fixed-right{ display:none; }
+  .fixed-left, .fixed-right{ display:none; } /* keep desktop fixed sidebars hidden on medium screens */
   .site-header{ padding:20px; }
   .header-inner{ max-width:100%; gap:12px; }
   .logo img{ width:160px; height:160px; }
   .title-wrap{ text-align:left; margin-left:10px; }
-  .mobile-toggle{ display:inline-block; position:absolute; right:12px; top:18px; background:var(--accent-dark); color:white; border-radius:8px; border:0; padding:8px 10px; font-weight:700; z-index:40; }
+  .mobile-toggle{ display:inline-block; position:fixed; right:12px; top:12px; background:var(--accent-dark); color:white; border-radius:8px; border:0; padding:8px 10px; font-weight:700; z-index:60; } /* FIXED menu button */
   .full-divider{ height:28px; }
   .container{ padding:0 18px; }
-  .about{ min-height:520px; grid-template-columns: 1fr; }
-  .about-right{ padding:20px; }
+  /* on medium screens make about stacked but ensure photo below text */
+  .about{ min-height:520px; display:flex; flex-direction:column; }
+  .about-right{ order:1; padding:20px; }
+  .about-left{ order:2; min-height:240px; background-size:cover; background-position:center; } /* ensure photo visible */
   .service{ grid-template-columns:1fr; min-height:auto; }
 }
 
@@ -223,15 +216,17 @@ body{
   .mobile-toggle{ right:12px; top:12px; }
   .header-inner{ flex-direction:column; align-items:center; gap:10px; }
   .title-wrap{text-align:center;}
-  .header-contacts{ display:none; } /* contacts appear in mobile sidebar */
+  .header-contacts{ display:none; }
   .logo img{ width:140px; height:140px; }
   .site-title{ font-size: clamp(20px, 7vw, 36px); }
-  .about{ min-height:420px; }
+  .about{ min-height:420px; display:flex; flex-direction:column; }
   .container{ max-width: 680px; }
-  /* mobile sidebar behavior */
   .mobile-sidebar{ position:fixed; left:0; top:0; bottom:0; width:85vw; max-width:360px; background:var(--bg); transform:translateX(-110%); transition:transform .28s ease; z-index:99999; padding:18px; box-shadow: 6px 0 30px rgba(0,0,0,0.18); display:none; }
   .mobile-sidebar.open{ transform:translateX(0); display:block; }
   .mobile-close{ position:absolute; right:12px; top:10px; background:transparent; border:0; font-size:20px; cursor:pointer; }
   .mobile-nav ul{ list-style:none; padding:0; margin-top:48px; display:flex; flex-direction:column; gap:10px; }
   .mobile-nav a{ display:block; padding:10px 12px; border-radius:8px; background: linear-gradient(180deg, rgba(223,246,236,1), rgba(191,234,209,1)); color:var(--title-color); font-weight:700; text-decoration:none; }
+  /* ensure mobile photo visible below text on small screens */
+  .about-right{ order:1; }
+  .about-left{ order:2; min-height:260px; background-size:cover; background-position:center; }
 }
