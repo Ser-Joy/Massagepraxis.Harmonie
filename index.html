@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!doctype html>
 <html lang="de">
 <head>
@@ -6,7 +7,7 @@
   <title>Massagepraxis Harmonie — Igor &amp; Valentina Osmykha</title>
   <meta name="description" content="Massagepraxis Harmonie in Villingen-Schwenningen — entspannende und gesundheitsfördernde Massagen." />
 
-  <!-- Шрифты: Arial Black берём из системы; Gabriola может быть не у всех — смотрите пояснение ниже -->
+  <!-- Шрифты: Inter + Montserrat для некоторых заголовков; Arial Black используем из системы -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
@@ -18,10 +19,12 @@
 </head>
 <body>
 
+  <!-- ===== HEADER / HERO ===== -->
   <header class="site-header">
     <div class="header-inner">
-      <!-- Логотип слева (положите свой большой логотип в images/logo.png) -->
+      <!-- Логотип слева -->
       <div class="logo" id="logo" title="Massagepraxis Harmonie">
+        <!-- Положите сюда images/logo.png (большой логотип) -->
         <img src="images/logo.png" alt="Harmonie logo">
       </div>
 
@@ -31,7 +34,7 @@
         <p class="tagline">WIR BRINGEN HARMONIE FÜR KÖRPER UND SEELE</p>
       </div>
 
-      <!-- Право: владельцы и контакты (владельцы чуть сдвинуты вправо, как на скрине) -->
+      <!-- Правая колонка: владельцы и контакты -->
       <div class="right-block">
         <p class="owners">Igor &amp; Valentina Osmykha — <span class="owners-small">Villingen-Schwenningen</span></p>
 
@@ -44,15 +47,98 @@
     </div>
   </header>
 
+  <!-- ===== MAIN CONTENT ===== -->
   <main class="container">
-    <!-- ... остальная часть страницы (about / services / booking / footer) ... -->
+
+    <!-- ABOUT: картинка слева, плашка справа -->
+    <section class="about">
+      <!-- Положите images/about-left.jpg -->
+      <div class="about-left" style="background-image: url('images/about-left.jpg');" role="img" aria-label="Harmonische Illustration"></div>
+
+      <div class="about-right">
+        <h2>Über uns</h2>
+        <p>Wir sind ein Ehepaar mit langjähriger Erfahrung im Bereich gesundheitsfördernder und entspannender Massagen. Unser Ziel ist es, Ihre Kräfte wiederherzustellen, Spannungen zu lösen und das allgemeine Wohlbefinden zu steigern.</p>
+        <p>Wir arbeiten mit sanften, individuell angepassten Techniken, sicher und wirksam für Menschen jeden Alters.</p>
+      </div>
+    </section>
+
+    <!-- SERVICES: крупные карточки, шахматный порядок -->
+    <section class="services">
+      <h2 class="services-title">Leistungen &amp; Preise</h2>
+
+      <!-- Service 1: текст слева, картинка справа -->
+      <article class="service">
+        <div class="service-text">
+          <h3>Rücken- und Nackenmassage</h3>
+          <p class="duration">Dauer: 40 Minuten</p>
+          <div class="price">30 €</div>
+        </div>
+        <div class="service-image" style="background-image: url('images/service1.jpg');" aria-hidden="true"></div>
+      </article>
+
+      <!-- Service 2: зеркально (картинка слева, текст справа) -->
+      <article class="service reverse">
+        <div class="service-image" style="background-image: url('images/service2.jpg');" aria-hidden="true"></div>
+        <div class="service-text">
+          <h3>Rücken- und Beinmassage</h3>
+          <p class="duration">Dauer: 60 Minuten</p>
+          <div class="price">45 €</div>
+        </div>
+      </article>
+
+      <!-- Service 3: как первая -->
+      <article class="service">
+        <div class="service-text">
+          <h3>Ganzkörpermassage</h3>
+          <p class="duration">Dauer: 90 Minuten</p>
+          <div class="price">60 €</div>
+        </div>
+        <div class="service-image" style="background-image: url('images/service3.jpg');" aria-hidden="true"></div>
+      </article>
+
+      <!-- пример дополнительных услуг (копируй / меняй) -->
+      <!--
+      <article class="service reverse">
+        <div class="service-image" style="background-image: url('images/service4.jpg');"></div>
+        <div class="service-text"> ... </div>
+      </article>
+      -->
+
+    </section>
+
+    <!-- BOOKING -->
+    <section class="booking">
+      <h2>Termine &amp; Kontakt</h2>
+      <p>Für Termine rufen Sie uns an, schreiben Sie per WhatsApp oder senden Sie eine E-Mail.</p>
+
+      <form id="contact-form" action="https://formspree.io/f/xgvlkegy" method="POST">
+        <div class="form-row">
+          <label>Ihr Name
+            <input type="text" name="name" required>
+          </label>
+          <label>Telefon oder E-Mail
+            <input type="text" name="contact" required>
+          </label>
+        </div>
+        <label>Ihre Nachricht
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button class="btn" type="submit">Absenden</button>
+      </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>© Massagepraxis «Harmonie» — Igor &amp; Valentina Osmykha — Villingen-Schwenningen</p>
+      <p>Tel: <a href="tel:+491603216028">+49 160 3216028</a> — E-Mail: <a href="mailto:post.Harmonie@gmx.de">post.Harmonie@gmx.de</a></p>
+    </footer>
   </main>
 
-  <!-- Секретное сообщение: теперь большой центрированный overlay -->
-  <div id="secretMessage" aria-hidden="true">Made by SerJoy</div>
+  <!-- ===== SECRET MESSAGE (overlay, центр, БОЛЬШОЕ) ===== -->
+  <div id="secretMessage" aria-hidden="true"></div>
 
+  <!-- Скрипт: 7 кликов по логотипу или последовательность 'harmonie' -->
   <script>
-    // Секретное послание — 7 кликов по логотипу или набор последовательности
     (function(){
       const area = document.getElementById('logo');
       const msg = document.getElementById('secretMessage');
@@ -60,26 +146,31 @@
 
       function showMessage(){
         msg.classList.add('visible');
-        // через 6сек убрать
+        // автоматическое скрытие через 6 секунд
         setTimeout(()=> msg.classList.remove('visible'), 6000);
       }
+
       function registerClick(){
         clicks++;
         if(timer) clearTimeout(timer);
         timer = setTimeout(()=> { clicks = 0; }, 5000);
-        if(clicks >= 7){ showMessage(); clicks = 0; }
+        if(clicks >= 7){
+          showMessage();
+          clicks = 0;
+        }
       }
       if(area) area.addEventListener('click', registerClick);
 
-      const secretSeq = ['h','a','r','m','o','n','i','e'];
-      let seqIndex = 0;
+      const seq = ['h','a','r','m','o','n','i','e'];
+      let idx = 0;
       window.addEventListener('keydown', (e)=>{
-        if(e.key.toLowerCase() === secretSeq[seqIndex]) {
-          seqIndex++;
-          if(seqIndex === secretSeq.length){ showMessage(); seqIndex = 0; }
-        } else { seqIndex = 0; }
+        if(e.key.toLowerCase() === seq[idx]){
+          idx++;
+          if(idx === seq.length){ showMessage(); idx = 0; }
+        } else idx = 0;
       });
     })();
   </script>
+
 </body>
 </html>
