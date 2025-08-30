@@ -11,77 +11,73 @@
 
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Favicon -->
+  <!-- Favicons -->
   <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="images/favicon-16.png" sizes="16x16" type="image/png">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-  <!-- ===== HEADER / HERO ===== -->
+  <!-- FIXED LEFT NAV (visible on desktop, hidden on small screens) -->
+  <aside class="fixed-left" aria-label="Seiten-Navigation">
+    <nav class="left-nav">
+      <ul>
+        <li><a href="#about">Über uns</a></li>
+        <li><a href="#services">Leistungen &amp; Preise</a></li>
+        <li><a href="#booking">Termin vereinbaren</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- FIXED RIGHT HOURS -->
+  <aside class="fixed-right" aria-label="Öffnungszeiten">
+    <div class="hours-card">
+      <h4>Öffnungszeiten</h4>
+      <ul>
+        <li><strong>Montag:</strong> 11:00–15:30</li>
+        <li><strong>Dienstag:</strong> 11:00–15:30</li>
+        <li><strong>Mittwoch:</strong> 11:00–15:30; 17:00–20:00</li>
+        <li><strong>Donnerstag:</strong> 11:00–15:30</li>
+        <li><strong>Freitag:</strong> 09:00–12:00</li>
+        <li><strong>Samstag:</strong> freier Tag</li>
+        <li><strong>Sonntag:</strong> freier Tag</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- HEADER -->
   <header class="site-header" role="banner">
     <div class="header-inner">
-      <!-- Логотип слева -->
       <div class="logo" id="logo" title="Massagepraxis Harmonie">
         <img src="images/logo.png" alt="Harmonie logo">
       </div>
 
-      <!-- Центр: крупный заголовок и слоган -->
       <div class="title-wrap">
         <h1 class="site-title">Massagepraxis «Harmonie»</h1>
         <p class="tagline">WIR BRINGEN HARMONIE FÜR KÖRPER UND SEELE</p>
       </div>
 
-      <!-- Правая колонка: владельцы и контакты -->
-      <div class="right-block">
-        <p class="owners">Igor &amp; Valentina Osmykha — <span class="owners-small">Villingen-Schwenningen</span></p>
-
-        <div class="contacts">
-          <a class="btn" href="tel:+491603216028">Anrufen: +49 160 3216028</a>
-          <a class="btn outline" href="https://wa.me/491603216028" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="btn outline mail" href="mailto:post.Harmonie@gmx.de">post.Harmonie@gmx.de</a>
-        </div>
+      <div class="header-contacts">
+        <a class="btn primary" href="tel:+491603216028">Anrufen</a>
+        <a class="btn ghost" href="https://wa.me/491603216028" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn ghost" href="mailto:post.Harmonie@gmx.de">post.Harmonie@gmx.de</a>
       </div>
+
+      <!-- mobile menu toggle (visible on small screens) -->
+      <button id="mobileToggle" class="mobile-toggle" aria-expanded="false" aria-controls="mobileSidebar">☰</button>
     </div>
   </header>
 
-  <!-- ===== MAIN LAYOUT: SIDEBAR (nav + hours) + CONTENT ===== -->
-  <main class="page-grid container" role="main">
-    <!-- LEFT SIDEBAR: навигация + часы работы, будет sticky -->
-    <aside class="sidebar">
-      <nav class="side-inner" aria-label="Seiten-Navigation">
-        <ul class="side-nav">
-          <li><a href="#about">Über uns</a></li>
-          <li><a href="#services">Leistungen &amp; Preise</a></li>
-          <li><a href="#booking">Termin vereinbaren</a></li>
-        </ul>
+  <!-- FULL-WIDTH DIVIDER (under header, spans entire screen) -->
+  <div class="full-divider" aria-hidden="true"></div>
 
-        <div class="work-hours" aria-label="Öffnungszeiten">
-          <h4>Öffnungszeiten</h4>
-          <ul>
-            <li><strong>Montag:</strong> 11:00–15:30</li>
-            <li><strong>Dienstag:</strong> 11:00–15:30</li>
-            <li><strong>Mittwoch:</strong> 11:00–15:30; 17:00–20:00</li>
-            <li><strong>Donnerstag:</strong> 11:00–15:30</li>
-            <li><strong>Freitag:</strong> 09:00–12:00</li>
-            <li><strong>Samstag:</strong> freier Tag</li>
-            <li><strong>Sonntag:</strong> freier Tag</li>
-          </ul>
-        </div>
-      </nav>
-    </aside>
-
-    <!-- CENTER: основной контент -->
-    <section class="content">
-      <!-- divider (под шапкой) -->
-      <div class="section-divider"></div>
+  <!-- MAIN CONTENT (margins reserved for fixed sidebars) -->
+  <main id="main" class="main-content" role="main">
+    <div class="container">
 
       <!-- ABOUT -->
       <section id="about" class="about">
-        <!-- Левый блок — большая вертикальная область для фото -->
         <div class="about-left" style="background-image: url('images/about-left.jpg');" role="img" aria-label="Harmonische Illustration"></div>
-
-        <!-- Правая плашка с текстом (зеленый фон) -->
         <div class="about-right">
           <h2>Über uns</h2>
           <p>Wir sind ein Ehepaar mit langjähriger Erfahrung im Bereich gesundheitsfördernder und entspannender Massagen. Unser Ziel ist es, Ihre Kräfte wiederherzustellen, Spannungen zu lösen und das allgemeine Wohlbefinden zu steigern.</p>
@@ -89,8 +85,8 @@
         </div>
       </section>
 
-      <!-- разделитель -->
-      <div class="section-divider"></div>
+      <!-- full width divider -->
+      <div class="full-divider"></div>
 
       <!-- SERVICES -->
       <section id="services" class="services">
@@ -125,7 +121,7 @@
 
       </section>
 
-      <div class="section-divider"></div>
+      <div class="full-divider"></div>
 
       <!-- BOOKING -->
       <section id="booking" class="booking">
@@ -144,80 +140,72 @@
           <label>Ihre Nachricht
             <textarea name="message" rows="4" required></textarea>
           </label>
-          <button class="btn" type="submit">Absenden</button>
+          <button class="btn primary" type="submit">Absenden</button>
         </form>
       </section>
 
-      <div class="section-divider"></div>
+      <div class="full-divider"></div>
 
       <footer class="site-footer">
         <p>© Massagepraxis «Harmonie» — Igor &amp; Valentina Osmykha — Villingen-Schwenningen</p>
         <p>Tel: <a href="tel:+491603216028">+49 160 3216028</a> — E-Mail: <a href="mailto:post.Harmonie@gmx.de">post.Harmonie@gmx.de</a></p>
       </footer>
-    </section>
+    </div>
   </main>
 
-  <!-- MOBILE: кнопка для показа боковой панели (на маленьких экранах) -->
-  <button id="mobileToggle" class="mobile-toggle" aria-expanded="false" aria-controls="mobileSidebar">
-    ☰ Menü
-  </button>
-
-  <div id="mobileSidebar" class="mobile-sidebar" aria-hidden="true">
+  <!-- MOBILE SIDEBAR (contains both nav and hours for phones) -->
+  <aside id="mobileSidebar" class="mobile-sidebar" aria-hidden="true">
     <button id="mobileClose" class="mobile-close" aria-label="Schließen">✕</button>
-    <nav>
-      <ul class="mobile-nav">
+    <nav class="mobile-nav">
+      <ul>
         <li><a href="#about" class="mobile-link">Über uns</a></li>
         <li><a href="#services" class="mobile-link">Leistungen &amp; Preise</a></li>
         <li><a href="#booking" class="mobile-link">Termin vereinbaren</a></li>
       </ul>
-
-      <div class="mobile-hours">
-        <h4>Öffnungszeiten</h4>
-        <ul>
-          <li><strong>Montag:</strong> 11:00–15:30</li>
-          <li><strong>Dienstag:</strong> 11:00–15:30</li>
-          <li><strong>Mittwoch:</strong> 11:00–15:30; 17:00–20:00</li>
-          <li><strong>Donnerstag:</strong> 11:00–15:30</li>
-          <li><strong>Freitag:</strong> 09:00–12:00</li>
-          <li><strong>Samstag:</strong> freier Tag</li>
-          <li><strong>Sonntag:</strong> freier Tag</li>
-        </ul>
-      </div>
     </nav>
-  </div>
 
-  <!-- SECRET MESSAGE (overlay center, big) -->
+    <div class="mobile-hours">
+      <h4>Öffnungszeiten</h4>
+      <ul>
+        <li><strong>Montag:</strong> 11:00–15:30</li>
+        <li><strong>Dienstag:</strong> 11:00–15:30</li>
+        <li><strong>Mittwoch:</strong> 11:00–15:30; 17:00–20:00</li>
+        <li><strong>Donnerstag:</strong> 11:00–15:30</li>
+        <li><strong>Freitag:</strong> 09:00–12:00</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- SECRET MESSAGE overlay -->
   <div id="secretMessage" aria-hidden="true"></div>
 
-  <!-- JS: мобильное меню и показ секретного сообщения -->
+  <!-- SCRIPTS: mobile toggle + secret message + smooth scroll -->
   <script>
-    // mobile sidebar toggle
+    // MOBILE SIDEBAR
     (function(){
       const toggle = document.getElementById('mobileToggle');
       const sidebar = document.getElementById('mobileSidebar');
       const closeBtn = document.getElementById('mobileClose');
       const mobileLinks = document.querySelectorAll('.mobile-link');
 
-      function openSidebar(){
+      function openSidebar() {
         sidebar.classList.add('open');
-        sidebar.setAttribute('aria-hidden','false');
+        sidebar.setAttribute('aria-hidden', 'false');
         toggle.setAttribute('aria-expanded','true');
       }
       function closeSidebar(){
         sidebar.classList.remove('open');
-        sidebar.setAttribute('aria-hidden','true');
+        sidebar.setAttribute('aria-hidden', 'true');
         toggle.setAttribute('aria-expanded','false');
       }
 
       toggle.addEventListener('click', openSidebar);
       closeBtn.addEventListener('click', closeSidebar);
       mobileLinks.forEach(a => a.addEventListener('click', closeSidebar));
-
-      // close on ESC
-      window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeSidebar(); });
+      window.addEventListener('keydown', e => { if(e.key === 'Escape') closeSidebar(); });
     })();
 
-    // secret message logic (7 clicks or secret sequence)
+    // SECRET message logic (7 clicks or sequence)
     (function(){
       const area = document.getElementById('logo');
       const msg = document.getElementById('secretMessage');
@@ -233,24 +221,22 @@
         clicks++;
         if(timer) clearTimeout(timer);
         timer = setTimeout(()=> { clicks = 0; }, 5000);
-        if(clicks >= 7){
-          showMessage();
-          clicks = 0;
-        }
+        if(clicks >= 7){ showMessage(); clicks = 0; }
       }
       if(area) area.addEventListener('click', registerClick);
 
-      const seq = ['h','a','r','m','o','n','i','e'];
-      let idx = 0;
-      window.addEventListener('keydown', (e)=>{
-        if(e.key.toLowerCase() === seq[idx]){ idx++; if(idx === seq.length){ showMessage(); idx = 0; } } else idx = 0;
+      const secretSeq = ['h','a','r','m','o','n','i','e'];
+      let seqIndex = 0;
+      window.addEventListener('keydown', (e) => {
+        if(e.key.toLowerCase() === secretSeq[seqIndex]) {
+          seqIndex++;
+          if(seqIndex === secretSeq.length){ showMessage(); seqIndex = 0; }
+        } else seqIndex = 0;
       });
     })();
 
-    // smooth scroll polyfill for anchor navigation (modern browsers support scrollBehavior)
-    (function(){
-      document.documentElement.style.scrollBehavior = 'smooth';
-    })();
+    // smooth scrolling
+    (function(){ document.documentElement.style.scrollBehavior = 'smooth'; })();
   </script>
 </body>
 </html>
