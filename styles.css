@@ -76,5 +76,15 @@ input[type="text"], textarea{width:100%; padding:10px; border:1px solid #e6e6e6;
   .title-wrap h1{font-size:20px}
 }
 
+.logo img {
+  display: block;
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 50%; /* делает круг */
+  border: 2px solid rgba(0,0,0,0.05); /* тонкая граница (опционально) */
+}
+
+
 /* Дополнительная плавность для кнопок */
 button.btn{border:none; cursor:pointer}
